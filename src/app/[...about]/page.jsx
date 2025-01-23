@@ -1,10 +1,17 @@
+// pages/about/[...about].js
 
-
-const About = ({params}) => {
-    console.log(params)
-  return (
-    <div>About</div>
-  )
+export async function generateStaticParams() {
+  // Yeh aapke dynamic params ke liye data fetch karta hai
+  return [
+    { about: ['page1'] }, // Example, aapke routes ke hisaab se update karen
+    { about: ['page2'] },
+  ]
 }
 
-export default About
+export default function About({ params }) {
+  return (
+    <div>
+      <h1>About Page: {params.about.join(', ')}</h1>
+    </div>
+  )
+}
